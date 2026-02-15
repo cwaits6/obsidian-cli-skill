@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/cwaits6/obsidian-cli-skill/compare/v1.0.0...v1.1.0) (2026-02-15)
+
+
+### Features
+
+* add configurable batch settings, two-phase migration workflow, and backup disclaimer ([#2](https://github.com/cwaits6/obsidian-cli-skill/issues/2)) ([7de8f3e](https://github.com/cwaits6/obsidian-cli-skill/commit/7de8f3e8e847d104acff9bffe1c6295c3ec40c65))
+
 # 1.0.0 (2026-02-15)
 
 
