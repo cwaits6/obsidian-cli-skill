@@ -125,6 +125,16 @@ All operations follow an approval-first workflow:
 
 This ensures you maintain full control over your vault modifications.
 
+### Example: Migrate and Enrich Notes
+
+**Step 1: Claude proposes changes for review**
+
+![Claude proposes renames and property assignments for each note](assets/migration-proposal.png)
+
+**Step 2: Migration complete with summary**
+
+![Summary table showing completed migrations with all assigned properties](assets/migration-complete.png)
+
 ## Important: Back Up Your Vault
 
 Before performing any batch operations (migrations, bulk property changes, etc.), **ensure you have a backup of your vault**. This skill modifies files directly via the Obsidian CLI and changes at scale may be difficult to reverse manually.
