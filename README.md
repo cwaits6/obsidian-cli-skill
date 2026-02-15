@@ -8,7 +8,7 @@ Comprehensive Obsidian CLI automation skill for Claude Code. Features 95+ fully 
 ## Features
 
 - Migrate and enrich notes with intelligent property assignment
-- Create and query Obsidian Bases (database views and structured data)
+- Create and query Obsidian Bases (structured data views)
 - Bulk file operations (move, rename, delete with auto-link updates)
 - Generate Templater templates for note automation
 - Comprehensive search and link analysis
@@ -21,7 +21,11 @@ Comprehensive Obsidian CLI automation skill for Claude Code. Features 95+ fully 
 In Claude Code terminal:
 
 ```bash
-/plugin install cwaits6/obsidian-cli-skill
+# Add the marketplace
+/plugin marketplace add cwaits6/obsidian-cli-skill
+
+# Install the skill
+/plugin install obsidian-cli@obsidian-cli-skill
 ```
 
 ## Quick Start
@@ -47,44 +51,45 @@ Show me all notes linking to my kubernetes reference with usage counts
 
 ## Documentation
 
-Complete command documentation organized by category in `references/`:
+Complete command documentation organized by category in [`plugins/obsidian-cli/references/`](plugins/obsidian-cli/references/):
 
 **Core Operations**
-- [obsidian-cli-files.md](references/obsidian-cli-files.md) - File operations
-- [obsidian-cli-properties.md](references/obsidian-cli-properties.md) - Property management
-- [obsidian-cli-vault.md](references/obsidian-cli-vault.md) - Vault operations
+- [obsidian-cli-files.md](plugins/obsidian-cli/references/obsidian-cli-files.md) - File operations
+- [obsidian-cli-properties.md](plugins/obsidian-cli/references/obsidian-cli-properties.md) - Property management
+- [obsidian-cli-vault.md](plugins/obsidian-cli/references/obsidian-cli-vault.md) - Vault operations
 
 **Advanced Features**
-- [obsidian-cli-bases.md](references/obsidian-cli-bases.md) - Base operations
-- [obsidian-cli-templates.md](references/obsidian-cli-templates.md) - Template generation
-- [obsidian-cli-plugins.md](references/obsidian-cli-plugins.md) - Plugin management
+- [obsidian-cli-bases.md](plugins/obsidian-cli/references/obsidian-cli-bases.md) - Base operations
+- [obsidian-cli-templates.md](plugins/obsidian-cli/references/obsidian-cli-templates.md) - Template generation
+- [obsidian-cli-plugins.md](plugins/obsidian-cli/references/obsidian-cli-plugins.md) - Plugin management
 
 **Search & Analysis**
-- [obsidian-cli-search.md](references/obsidian-cli-search.md) - Search and links
-- [obsidian-cli-tags-aliases.md](references/obsidian-cli-tags-aliases.md) - Tags and aliases
-- [obsidian-cli-tasks.md](references/obsidian-cli-tasks.md) - Task management
+- [obsidian-cli-search.md](plugins/obsidian-cli/references/obsidian-cli-search.md) - Search and links
+- [obsidian-cli-tags-aliases.md](plugins/obsidian-cli/references/obsidian-cli-tags-aliases.md) - Tags and aliases
+- [obsidian-cli-tasks.md](plugins/obsidian-cli/references/obsidian-cli-tasks.md) - Task management
 
 **Data Management**
-- [obsidian-cli-bookmarks.md](references/obsidian-cli-bookmarks.md) - Bookmarks
-- [obsidian-cli-history.md](references/obsidian-cli-history.md) - Version history
-- [obsidian-cli-sync.md](references/obsidian-cli-sync.md) - Sync operations
+- [obsidian-cli-bookmarks.md](plugins/obsidian-cli/references/obsidian-cli-bookmarks.md) - Bookmarks
+- [obsidian-cli-history.md](plugins/obsidian-cli/references/obsidian-cli-history.md) - Version history
+- [obsidian-cli-sync.md](plugins/obsidian-cli/references/obsidian-cli-sync.md) - Sync operations
 
 **UI & Workspace**
-- [obsidian-cli-workspace.md](references/obsidian-cli-workspace.md) - Workspace management
-- [obsidian-cli-themes.md](references/obsidian-cli-themes.md) - Theme management
-- [obsidian-cli-snippets.md](references/obsidian-cli-snippets.md) - CSS snippets
-- [obsidian-cli-commands.md](references/obsidian-cli-commands.md) - Command execution
+- [obsidian-cli-workspace.md](plugins/obsidian-cli/references/obsidian-cli-workspace.md) - Workspace management
+- [obsidian-cli-themes.md](plugins/obsidian-cli/references/obsidian-cli-themes.md) - Theme management
+- [obsidian-cli-snippets.md](plugins/obsidian-cli/references/obsidian-cli-snippets.md) - CSS snippets
+- [obsidian-cli-commands.md](plugins/obsidian-cli/references/obsidian-cli-commands.md) - Command execution
 
 **Utilities**
-- [obsidian-cli-utilities.md](references/obsidian-cli-utilities.md) - General utilities
-- [obsidian-cli-dev.md](references/obsidian-cli-dev.md) - Developer tools
+- [obsidian-cli-utilities.md](plugins/obsidian-cli/references/obsidian-cli-utilities.md) - General utilities
+- [obsidian-cli-dev.md](plugins/obsidian-cli/references/obsidian-cli-dev.md) - Developer tools
 
 ## Configuration
 
-Copy `config.yaml.example` to your Claude skills directory and customize for your vault:
+After installing, copy the example config and customize for your vault:
 
 ```bash
-cp config.yaml.example ~/.claude/skills/obsidian-cli/config.yaml
+cp ~/.claude/plugins/obsidian-cli-skill/plugins/obsidian-cli/config.yaml.example \
+   ~/.claude/plugins/obsidian-cli-skill/plugins/obsidian-cli/config.yaml
 ```
 
 Edit with your vault settings, property types, and naming conventions.
@@ -99,12 +104,12 @@ Your `config.yaml` file is **safe from updates**. When you update this skill:
 
 This means you can safely update to new versions without losing your configuration.
 
-### Updating to New Versions
+### Updating
 
 In Claude Code terminal:
 
 ```bash
-/plugin update cwaits6/obsidian-cli-skill
+/plugin marketplace update
 ```
 
 Your `config.yaml` will remain intact with all your personal settings.

@@ -58,37 +58,37 @@ When you need to work with your vault, Claude will:
 
 ### File Operations
 Moving, renaming, creating, reading, deleting files. Obsidian CLI automatically updates all vault links.
-- **See:** [obsidian-cli-files.md](references/obsidian-cli-files.md)
+- **See:** [obsidian-cli-files.md](../../references/obsidian-cli-files.md)
 - **When to use:** Organizing notes, bulk migrations, file cleanup
 - **Key command:** `obsidian move file=<path> to=<newpath>` (handles renaming and moving with auto-link updates)
 
 ### Property Operations
 Setting, reading, removing properties/frontmatter on notes.
-- **See:** [obsidian-cli-properties.md](references/obsidian-cli-properties.md)
+- **See:** [obsidian-cli-properties.md](../../references/obsidian-cli-properties.md)
 - **When to use:** Assigning type, context, topic, tags, and other metadata
 - **Key commands:** `obsidian property:set name=<prop> value=<val> file=<path>`, `obsidian property:read name=<prop> file=<path>`
 
 ### Base Operations
 Creating and querying Obsidian Bases (.base files) for creating Bases with structured data.
-- **See:** [obsidian-cli-bases.md](references/obsidian-cli-bases.md)
+- **See:** [obsidian-cli-bases.md](../../references/obsidian-cli-bases.md)
 - **When to use:** Setting up views to query notes by properties, creating dashboards
 - **Key commands:** `obsidian bases`, `obsidian base:query`, `obsidian base:create`
 
 ### Template Operations
 Creating, reading, and inserting Templater templates.
-- **See:** [obsidian-cli-templates.md](references/obsidian-cli-templates.md)
+- **See:** [obsidian-cli-templates.md](../../references/obsidian-cli-templates.md)
 - **When to use:** Automating note creation, inserting dynamic content
 - **Key commands:** `obsidian templates`, `obsidian template:read`, `obsidian template:insert`
 
 ### Search Operations
 Searching vault content and links.
-- **See:** [obsidian-cli-search.md](references/obsidian-cli-search.md)
+- **See:** [obsidian-cli-search.md](../../references/obsidian-cli-search.md)
 - **When to use:** Finding notes by content, analyzing link structure
 - **Key commands:** `obsidian search`, `obsidian links`, `obsidian backlinks`
 
 ### Plugin Operations
 Enabling, disabling, managing plugins.
-- **See:** [obsidian-cli-plugins.md](references/obsidian-cli-plugins.md)
+- **See:** [obsidian-cli-plugins.md](../../references/obsidian-cli-plugins.md)
 - **When to use:** Automating plugin setup, running plugin commands via CLI
 - **Key commands:** `obsidian plugin:enable`, `obsidian plugin:disable`, `obsidian command`
 
@@ -99,7 +99,7 @@ Enabling, disabling, managing plugins.
 Reorganize notes to a new folder while intelligently assigning properties:
 
 1. Claude reads your notes from the source folder
-2. Using the [property extraction guide](references/property-extraction-guide.md), Claude analyzes each note's content
+2. Using the [property extraction guide](../../references/property-extraction-guide.md), Claude analyzes each note's content
 3. Claude proposes properties (type, context, topic, tags, etc.) based on the content
 4. You review and approve the proposed properties
 5. Claude rewrites each note with the assigned YAML frontmatter (using `obsidian property:set`)
@@ -112,7 +112,7 @@ Reorganize notes to a new folder while intelligently assigning properties:
 Generate `.base` files to define Base structures:
 
 1. You describe what data you want to query (e.g., "all how-to notes organized by topic")
-2. Claude references your [CONFIG_TEMPLATE.yaml](CONFIG_TEMPLATE.yaml) to understand your property schema
+2. Claude references your [config.yaml.example](../../config.yaml.example) to understand your property schema
 3. Claude proposes the `.base` file structure and view configuration
 4. You approve the structure
 5. Claude creates the `.base` file using Obsidian CLI
@@ -130,47 +130,47 @@ Create new Templater templates for automating note creation:
 ## Reference Materials
 
 ### Configuration & Schema
-- **[CONFIG_TEMPLATE.yaml](CONFIG_TEMPLATE.yaml)** - Template for your property schema (copy to config.yaml)
-- **[property-schema.md](references/property-schema.md)** - Your universal and conditional properties
-- **[property-extraction-guide.md](references/property-extraction-guide.md)** - How Claude analyzes content to assign properties
+- **[config.yaml.example](../../config.yaml.example)** - Template for your property schema (copy to config.yaml)
+- **[property-schema.md](../../references/property-schema.md)** - Your universal and conditional properties
+- **[property-extraction-guide.md](../../references/property-extraction-guide.md)** - How Claude analyzes content to assign properties
 
 ### Vault Understanding
-- **[obsidian-bases.md](references/obsidian-bases.md)** - How to create and structure `.base` files
-- **[templater-plugin.md](references/templater-plugin.md)** - Templater syntax and template patterns
-- **[native-workflows.md](references/native-workflows.md)** - Fallback native Obsidian approaches
+- **[obsidian-bases.md](../../references/obsidian-bases.md)** - How to create and structure `.base` files
+- **[templater-plugin.md](../../references/templater-plugin.md)** - Templater syntax and template patterns
+- **[native-workflows.md](../../references/native-workflows.md)** - Fallback native Obsidian approaches
 
 ### Obsidian CLI Commands (by category)
 
 **Core Operations**
-- **[obsidian-cli-files.md](references/obsidian-cli-files.md)** - File operations (create, read, move, delete, append, prepend, open)
-- **[obsidian-cli-properties.md](references/obsidian-cli-properties.md)** - Property/frontmatter management (set, read, remove)
-- **[obsidian-cli-vault.md](references/obsidian-cli-vault.md)** - Vault and folder operations (info, list files, folders, diff)
+- **[obsidian-cli-files.md](../../references/obsidian-cli-files.md)** - File operations (create, read, move, delete, append, prepend, open)
+- **[obsidian-cli-properties.md](../../references/obsidian-cli-properties.md)** - Property/frontmatter management (set, read, remove)
+- **[obsidian-cli-vault.md](../../references/obsidian-cli-vault.md)** - Vault and folder operations (info, list files, folders, diff)
 
 **Advanced Features**
-- **[obsidian-cli-bases.md](references/obsidian-cli-bases.md)** - Base operations (query, create, views)
-- **[obsidian-cli-templates.md](references/obsidian-cli-templates.md)** - Template operations (list, read, insert)
-- **[obsidian-cli-plugins.md](references/obsidian-cli-plugins.md)** - Plugin management (enable, disable, install, uninstall)
+- **[obsidian-cli-bases.md](../../references/obsidian-cli-bases.md)** - Base operations (query, create, views)
+- **[obsidian-cli-templates.md](../../references/obsidian-cli-templates.md)** - Template operations (list, read, insert)
+- **[obsidian-cli-plugins.md](../../references/obsidian-cli-plugins.md)** - Plugin management (enable, disable, install, uninstall)
 
 **Search & Analysis**
-- **[obsidian-cli-search.md](references/obsidian-cli-search.md)** - Search, links, backlinks, unresolved links, orphans, deadends
-- **[obsidian-cli-tags-aliases.md](references/obsidian-cli-tags-aliases.md)** - Tag and alias operations
-- **[obsidian-cli-outline.md](references/obsidian-cli-outline.md)** - Document structure and outline (when created)
+- **[obsidian-cli-search.md](../../references/obsidian-cli-search.md)** - Search, links, backlinks, unresolved links, orphans, deadends
+- **[obsidian-cli-tags-aliases.md](../../references/obsidian-cli-tags-aliases.md)** - Tag and alias operations
+- **[obsidian-cli-outline.md](../../references/obsidian-cli-outline.md)** - Document structure and outline (when created)
 
 **Data Management**
-- **[obsidian-cli-tasks.md](references/obsidian-cli-tasks.md)** - Task and checkbox operations
-- **[obsidian-cli-bookmarks.md](references/obsidian-cli-bookmarks.md)** - Bookmark management
-- **[obsidian-cli-history.md](references/obsidian-cli-history.md)** - File history and recovery (local versions)
-- **[obsidian-cli-sync.md](references/obsidian-cli-sync.md)** - Sync operations and version control
+- **[obsidian-cli-tasks.md](../../references/obsidian-cli-tasks.md)** - Task and checkbox operations
+- **[obsidian-cli-bookmarks.md](../../references/obsidian-cli-bookmarks.md)** - Bookmark management
+- **[obsidian-cli-history.md](../../references/obsidian-cli-history.md)** - File history and recovery (local versions)
+- **[obsidian-cli-sync.md](../../references/obsidian-cli-sync.md)** - Sync operations and version control
 
 **UI & Workspace**
-- **[obsidian-cli-workspace.md](references/obsidian-cli-workspace.md)** - Workspace and tab management
-- **[obsidian-cli-themes.md](references/obsidian-cli-themes.md)** - Theme installation and management
-- **[obsidian-cli-snippets.md](references/obsidian-cli-snippets.md)** - CSS snippet management
-- **[obsidian-cli-commands.md](references/obsidian-cli-commands.md)** - Command execution and hotkey lookup
+- **[obsidian-cli-workspace.md](../../references/obsidian-cli-workspace.md)** - Workspace and tab management
+- **[obsidian-cli-themes.md](../../references/obsidian-cli-themes.md)** - Theme installation and management
+- **[obsidian-cli-snippets.md](../../references/obsidian-cli-snippets.md)** - CSS snippet management
+- **[obsidian-cli-commands.md](../../references/obsidian-cli-commands.md)** - Command execution and hotkey lookup
 
 **Utilities & Development**
-- **[obsidian-cli-utilities.md](references/obsidian-cli-utilities.md)** - General utilities (version, reload, wordcount, outline, recents)
-- **[obsidian-cli-dev.md](references/obsidian-cli-dev.md)** - Developer tools (devtools, debugging, inspection, screenshots)
+- **[obsidian-cli-utilities.md](../../references/obsidian-cli-utilities.md)** - General utilities (version, reload, wordcount, outline, recents)
+- **[obsidian-cli-dev.md](../../references/obsidian-cli-dev.md)** - Developer tools (devtools, debugging, inspection, screenshots)
 
 ## Important Notes
 
@@ -178,6 +178,6 @@ Create new Templater templates for automating note creation:
 - **Direct CLI calls:** Claude calls Obsidian CLI commands directly via Bash (no wrapper scripts)
 - **Auto-link updates:** When moving/renaming files, Obsidian CLI automatically updates all vault links
 - **File naming:** Normalized automatically to lowercase kebab-case where needed
-- **Schema customization:** Always customize [CONFIG_TEMPLATE.yaml](CONFIG_TEMPLATE.yaml) to match your vault
+- **Schema customization:** Always customize [config.yaml.example](../../config.yaml.example) to match your vault
 - **CLI limitations:** If a task can't be done via CLI, detailed native Obsidian instructions will be provided
 - **Nested operations:** For complex workflows (e.g., migrate + enrich + query), operations happen in sequence with approval at each step
