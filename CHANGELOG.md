@@ -1,3 +1,10 @@
+# 1.0.0 (2026-02-15)
+
+
+### Features
+
+* add initial plugin marketplace configuration ([#1](https://github.com/cwaits6/obsidian-cli-skill/issues/1)) ([3332020](https://github.com/cwaits6/obsidian-cli-skill/commit/333202055516fcddd594c51e04c0d293ef1ef969))
+
 # Changelog
 
 ## [1.0.0] - 2026-02-15
