@@ -88,19 +88,19 @@ Complete command documentation organized by category in [`plugins/obsidian-cli/r
 After installing, copy the example config and customize for your vault:
 
 ```bash
-cp ~/.claude/plugins/obsidian-cli-skill/plugins/obsidian-cli/config.yaml.example \
-   ~/.claude/plugins/obsidian-cli-skill/plugins/obsidian-cli/config.yaml
+cp ~/.claude/plugins/marketplaces/obsidian-cli-skill/plugins/obsidian-cli/config.yaml.example \
+   ~/.claude/plugins/marketplaces/obsidian-cli-skill/plugins/obsidian-cli/config.yaml
 ```
 
-Edit with your vault settings, property types, and naming conventions.
+Edit `config.yaml` with your vault settings, property types, naming conventions, and batch preferences.
 
 ### Configuration Safety
 
-Your `config.yaml` file is **safe from updates**. When you update this skill:
+Your `config.yaml` lives in the **marketplaces** directory, which is a local git clone of this repository. Because `config.yaml` is in `.gitignore`:
 
-1. The skill files are updated from the repository
-2. Your personal `config.yaml` is **preserved** and not overwritten
-3. Only tracked repository files are updated (config.yaml is in .gitignore)
+1. Plugin updates pull new skill files via `git pull`
+2. Your personal `config.yaml` is **never overwritten** (git ignores it)
+3. Only tracked repository files are updated
 
 This means you can safely update to new versions without losing your configuration.
 
@@ -124,6 +124,10 @@ All operations follow an approval-first workflow:
 4. **Execute** - Commands are run via Obsidian CLI
 
 This ensures you maintain full control over your vault modifications.
+
+## Important: Back Up Your Vault
+
+Before performing any batch operations (migrations, bulk property changes, etc.), **ensure you have a backup of your vault**. This skill modifies files directly via the Obsidian CLI and changes at scale may be difficult to reverse manually.
 
 ## Requirements
 
