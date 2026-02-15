@@ -19,22 +19,28 @@ This skill enables batch automation of your Obsidian vault using the Obsidian CL
 
 IMPORTANT: Claude models must ALWAYS follow these rules when using this skill:
 
-1. **ALWAYS consult reference files**: Before proposing ANY obsidian command, ALWAYS read the corresponding reference file from the references/ directory. This is not optional.
+1. **ALWAYS read user config first**: Before any operation that depends on property schema, batch settings, or vault preferences, read the user's config file at:
+   ```
+   ~/.claude/plugins/marketplaces/obsidian-cli-skill/plugins/obsidian-cli/config.yaml
+   ```
+   If `config.yaml` does not exist, fall back to `config.yaml.example` in the same directory. The example file contains default values.
 
-2. **NEVER guess command syntax**: Do NOT attempt to construct obsidian commands from memory or general knowledge. Command syntax has been vetted and verified. Reference the documentation.
+2. **ALWAYS consult reference files**: Before proposing ANY obsidian command, ALWAYS read the corresponding reference file from the references/ directory. This is not optional.
 
-3. **Reference file structure**: Use this mapping to find the right documentation:
+3. **NEVER guess command syntax**: Do NOT attempt to construct obsidian commands from memory or general knowledge. Command syntax has been vetted and verified. Reference the documentation.
+
+4. **Reference file structure**: Use this mapping to find the right documentation:
    - File operations → obsidian-cli-files.md
    - Property operations → obsidian-cli-properties.md
    - Search/links → obsidian-cli-search.md
    - Plugin management → obsidian-cli-plugins.md
    - Any other operation → Check the reference list below
 
-4. **Parameter format**: All commands use `param=value` format (NOT --flag format). Always verify exact parameter names in reference files.
+5. **Parameter format**: All commands use `param=value` format (NOT --flag format). Always verify exact parameter names in reference files.
 
-5. **Examples provided**: Never construct examples yourself. Always use the pattern from the reference files as a template.
+6. **Examples provided**: Never construct examples yourself. Always use the pattern from the reference files as a template.
 
-6. **When in doubt**: If you cannot find a command in the reference files, the command may not exist or may require native Obsidian workflows instead.
+7. **When in doubt**: If you cannot find a command in the reference files, the command may not exist or may require native Obsidian workflows instead.
 
 **Failure to follow these rules will result in command execution failures and vault modification errors.**
 
@@ -42,10 +48,17 @@ IMPORTANT: Claude models must ALWAYS follow these rules when using this skill:
 
 All operations follow this pattern:
 
-1. **Analyze** - Claude reads notes/requirements
-2. **Propose** - Claude shows you the changes (properties, structure, commands, etc.)
-3. **Approve** - You review and approve before any files are modified
-4. **Execute** - Obsidian CLI commands make the approved changes
+1. **Analyze** - Claude reads notes/requirements and config.yaml
+2. **Propose** - Claude presents changes for review in phases (see Common Workflows for presentation formats)
+3. **Approve** - You review and approve each phase before any files are modified
+4. **Execute** - Claude executes the approved operations via Obsidian CLI
+
+**Approval behavior is controlled by `batch_settings.approval_mode` in config.yaml:**
+
+- **`batch`** — Each phase is presented as a complete summary. Once you approve a phase, Claude executes every operation in that phase without further prompts. Do not pause between operations to re-confirm.
+- **`single`** — Claude presents each note individually within each phase, getting approval before proceeding to the next note.
+
+**Batch size:** If the number of notes exceeds `batch_settings.max_batch_size` in config.yaml, Claude splits notes into multiple batches within each phase — proposing and getting approval for each batch before executing it.
 
 ## Obsidian CLI Command Categories
 
@@ -96,16 +109,74 @@ Enabling, disabling, managing plugins.
 
 ### Migrate and Enrich Notes
 
-Reorganize notes to a new folder while intelligently assigning properties:
+Reorganize notes to a new folder while intelligently assigning properties. This workflow has two phases, each presented and approved separately:
 
-1. Claude reads your notes from the source folder
+#### Phase 1: Property Assignment
+
+1. Claude reads all notes from the source folder
 2. Using the [property extraction guide](../../references/property-extraction-guide.md), Claude analyzes each note's content
-3. Claude proposes properties (type, context, topic, tags, etc.) based on the content
-4. You review and approve the proposed properties
-5. Claude rewrites each note with the assigned YAML frontmatter (using `obsidian property:set`)
-6. Claude moves enriched notes to the destination folder (using `obsidian move`)
+3. Claude presents a **Property Proposal** grouped by type for review
+4. You approve (or adjust), then Claude sets all properties via `obsidian property:set`
 
-**Approval step is mandatory** - Claude will show you the property assignments for each note before applying them.
+**Property Proposal format** — Claude MUST group notes by their assigned `type` under category headers:
+
+```
+## Property Proposal
+
+I'll organize your <N> notes with the following property assignments (all context: "<context>"):
+
+### Snippets (reusable commands)
+- Source/File.md → type: snippet, topic: [aws]
+- Source/Other.md → type: snippet, topic: [linux]
+
+### Troubleshooting (problem + solution)
+- Source/Bug.md → type: troubleshooting, topic: [kubernetes, helm], resolved: true
+
+### How-to (step-by-step procedures)
+- Source/Guide.md → type: how-to, topic: [aws, terraform]
+
+### Reference (documents what something is/how it works)
+- Source/Concepts.md → type: reference, topic: [kubernetes], tags: [kubernetes]
+
+### Inbox (unstructured captures)
+- Source/Draft.md → type: inbox, topic: [kubernetes]
+
+### Additional Notes
+- Troubleshooting notes with resolved solutions: Bug.md, Fix.md
+- Empty files: Note.md, Other.md — include or skip?
+- Type decision rationale for any ambiguous notes
+```
+
+**Rules:**
+- Group by type, not by source folder
+- Only show properties that differ from defaults (e.g., if all share the same context, state it once at the top)
+- Call out conditional properties (e.g., `resolved`) separately
+- Flag empty files and ambiguous type decisions for user input
+
+#### Phase 2: Rename and Move
+
+After properties are set:
+
+1. Claude presents a **Rename & Move Proposal** showing old filenames → new filenames + destination
+2. New filenames follow the `naming_conventions.file_format` specified in config.yaml
+3. You approve (or adjust), then Claude moves all files via `obsidian move`
+
+```
+## Rename & Move Proposal
+
+All files will be moved to: <destination_path>
+File naming convention: <file_format from config.yaml>
+
+- Source/Folder/File.md → new-filename.md
+- Source/Folder/Other File.md → other-filename.md
+- ...
+```
+
+**Approval behavior** is controlled by `batch_settings.approval_mode` in config.yaml:
+- **`batch`** — Each phase is presented as a complete summary. Once approved, all operations in that phase execute without further prompts.
+- **`single`** — Claude presents each note individually within each phase, getting approval before proceeding to the next note.
+
+**Batch size:** If the number of notes exceeds `batch_settings.max_batch_size` in config.yaml, Claude splits notes into multiple batches within each phase.
 
 ### Create Obsidian Bases
 
@@ -174,10 +245,11 @@ Create new Templater templates for automating note creation:
 
 ## Important Notes
 
-- **Approval required:** Claude will always show you the commands and ask for approval before executing
+- **Backup your vault:** Before performing any batch operations (migrations, bulk property changes, etc.), ensure you have a backup of your vault. This skill modifies files directly and changes may be difficult to reverse at scale.
+- **Approval required:** Claude will always show you the full plan and ask for approval before executing. Once approved, all operations execute without further prompts.
 - **Direct CLI calls:** Claude calls Obsidian CLI commands directly via Bash (no wrapper scripts)
 - **Auto-link updates:** When moving/renaming files, Obsidian CLI automatically updates all vault links
-- **File naming:** Normalized automatically to lowercase kebab-case where needed
+- **File naming:** Normalized automatically per `naming_conventions.file_format` in config.yaml
 - **Schema customization:** Always customize [config.yaml.example](../../config.yaml.example) to match your vault
 - **CLI limitations:** If a task can't be done via CLI, detailed native Obsidian instructions will be provided
 - **Nested operations:** For complex workflows (e.g., migrate + enrich + query), operations happen in sequence with approval at each step

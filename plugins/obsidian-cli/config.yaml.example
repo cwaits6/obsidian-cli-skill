@@ -60,5 +60,17 @@ naming_conventions:
   folder_format: Capitalized-Kebab-Case
   folder_examples: My-Notes, Projects, Reference
 
+# Batch operation settings
+batch_settings:
+  # Maximum number of notes to process per batch during migrations
+  # Keeps context manageable for large vaults. Notes beyond this limit
+  # are split into multiple batches, each proposed and approved separately.
+  max_batch_size: 15
+
+  # How approval works for batch operations (migrations, bulk property changes)
+  #   batch  - Approve the entire batch at once, then all operations execute without further prompts (default)
+  #   single - Approve each note individually before its properties are set and it is moved
+  approval_mode: batch
+
 # Vault path (optional - helps for relative path operations)
 vault_path: /path/to/your/vault
