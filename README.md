@@ -89,6 +89,26 @@ cp config.yaml.example ~/.claude/skills/obsidian-cli/config.yaml
 
 Edit with your vault settings, property types, and naming conventions.
 
+### Configuration Safety
+
+Your `config.yaml` file is **safe from updates**. When you update this skill:
+
+1. The skill files are updated from the repository
+2. Your personal `config.yaml` is **preserved** and not overwritten
+3. Only tracked repository files are updated (config.yaml is in .gitignore)
+
+This means you can safely update to new versions without losing your configuration.
+
+### Updating to New Versions
+
+In Claude Code terminal:
+
+```bash
+/plugin update cwaits6/obsidian-cli-skill
+```
+
+Your `config.yaml` will remain intact with all your personal settings.
+
 ## How It Works
 
 All operations follow an approval-first workflow:
