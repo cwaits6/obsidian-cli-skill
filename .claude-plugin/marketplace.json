@@ -4,7 +4,7 @@
     "name": "cwaits6"
   },
   "metadata": {
-    "description": "Comprehensive Obsidian CLI automation skill for Claude Code with 95+ fully documented commands"
+    "description": "Automate your Obsidian vault via CLI: note migration, property management, Bases, templates, search, and 95+ documented commands"
   },
   "plugins": [
     {

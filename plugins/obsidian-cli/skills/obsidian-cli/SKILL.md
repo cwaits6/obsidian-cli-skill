@@ -77,3 +77,22 @@ For batch operations (>5 files), split reasoning from execution:
 The planning model handles all decisions. The execution agent receives a list of pre-approved commands and runs them sequentially, reporting results per the output format standard.
 
 For single-file operations or operations requiring judgment (e.g., choosing property values), execute directly without delegation.
+
+## Error Handling
+
+If an `obsidian` CLI command fails:
+1. Report the failure inline using the error format from the output format standard
+2. Continue with remaining operations — do not stop the entire batch for one failure
+3. Include all failures in the final summary
+4. If the CLI binary is not found, stop and tell the user to enable Obsidian CLI (requires Obsidian 1.12.1+)
+
+## Examples
+
+**User:** "Migrate my Research notes to Notes with properties"
+**Action:** Read config.yaml → read all files in Research/ → analyze content → present compact property proposal → on approval, set properties → present rename & move proposal → on approval, move files. Follow [migration-workflow.md](../../references/migration-workflow.md).
+
+**User:** "Add type: reference to all files in my Docs folder"
+**Action:** Read [obsidian-cli-properties.md](../../references/obsidian-cli-properties.md) → list files in Docs/ → present proposal → on approval, run `obsidian property:set` for each file.
+
+**User:** "Create a Base that shows all how-to notes by topic"
+**Action:** Read config.yaml for property schema → read [obsidian-cli-bases.md](../../references/obsidian-cli-bases.md) → propose `.base` file structure → on approval, create the file.
