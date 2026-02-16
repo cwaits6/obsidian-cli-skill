@@ -16,16 +16,24 @@ Before starting, read:
 
 ### Property Proposal Format
 
-Use the compact proposal format from the output format standard. Group notes by assigned `type` using bold labels on the same line — never use `###` headers per type.
+Use the proposal format from the output format standard. Group notes by assigned `type` using bold labels — never use `###` headers per type. One line per file.
 
 ```
 **Property Proposal** — 12 files, all context: work
 
-**Snippets:** file.md → topic: [aws] · other.md → topic: [linux] · script.md → topic: [bash]
-**How-to:** guide.md → topic: [aws, terraform] · setup.md → topic: [kubernetes]
-**Troubleshooting:** bug.md → topic: [k8s, helm], resolved: true
-**Reference:** concepts.md → topic: [kubernetes], tags: [kubernetes]
-**Inbox:** draft.md → topic: [kubernetes]
+**Snippets:**
+- file.md → topic: [aws]
+- other.md → topic: [linux]
+- script.md → topic: [bash]
+**How-to:**
+- guide.md → topic: [aws, terraform]
+- setup.md → topic: [kubernetes]
+**Troubleshooting:**
+- bug.md → topic: [k8s, helm], resolved: true
+**Reference:**
+- concepts.md → topic: [kubernetes], tags: [kubernetes]
+**Inbox:**
+- draft.md → topic: [kubernetes]
 
 ⚠ Empty files: note.md, other.md — include or skip?
 ⚠ bug.md classified as troubleshooting (has problem/solution structure) — confirm?
@@ -34,8 +42,9 @@ Use the compact proposal format from the output format standard. Group notes by 
 ### Proposal Rules
 
 - Group by type, not by source folder
+- One line per file — each file gets its own line with its assigned properties
 - State shared values once in the header (e.g., context, destination) — never repeat per item
-- Use ` · ` to separate files on the same line when they share similar changes
+- If multiple files in the same group have identical properties, collapse with ` · `: `file.md · other.md → topic: [aws]`
 - Call out conditional properties (e.g., `resolved`) inline with the item
 - Flag empty files and ambiguous type decisions with ⚠
 
@@ -50,13 +59,16 @@ After properties are set:
 ```
 **Rename & Move Proposal** — 12 files → Notes/, convention: lowercase-kebab-case
 
-file.md → aws-cli-snippets.md · other.md → linux-disk-cleanup.md
-guide.md → terraform-vpc-setup.md · setup.md → k8s-cluster-init.md
-bug.md → helm-chart-timeout-fix.md · concepts.md → k8s-networking-overview.md
-draft.md → k8s-notes.md
+- file.md → aws-cli-snippets.md
+- other.md → linux-disk-cleanup.md
+- guide.md → terraform-vpc-setup.md
+- setup.md → k8s-cluster-init.md
+- bug.md → helm-chart-timeout-fix.md
+- concepts.md → k8s-networking-overview.md
+- draft.md → k8s-notes.md
 ```
 
-One line per group of files if they fit. No per-item headers, no extra vertical space.
+One line per file. No per-item headers, no extra vertical space.
 
 ## Approval Behavior
 

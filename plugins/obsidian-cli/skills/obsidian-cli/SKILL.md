@@ -72,11 +72,13 @@ Consult [templater-plugin.md](../../references/templater-plugin.md) for syntax a
 For batch operations (>5 files), split reasoning from execution:
 
 1. **Plan phase** (current model): Read notes, analyze content, build the proposal, get user approval
-2. **Execute phase** (delegate to Haiku): Use the Task tool with `model: "haiku"` to execute approved CLI commands in batches
+2. **Execute phase**: Delegate to the `batch-executor` agent to execute approved CLI commands. This agent runs on Haiku with Bash-only tool access for fast, low-cost execution.
 
-The planning model handles all decisions. The execution agent receives a list of pre-approved commands and runs them sequentially, reporting results per the output format standard.
+The planning model handles all decisions. The execution agent receives a numbered list of pre-approved commands and runs them sequentially, reporting results per the output format standard.
 
 For single-file operations or operations requiring judgment (e.g., choosing property values), execute directly without delegation.
+
+**Fallback:** If subagent delegation is not available (e.g., on Claude.ai web), execute commands directly in sequence.
 
 ## Error Handling
 

@@ -1,45 +1,41 @@
 # Output Format Standard
 
-All user-facing output must follow these formats. The primary goal is **compactness** — users work in a terminal and should never need to scroll more than one screen to see a complete proposal or summary.
+All user-facing output must follow these formats. The goal is **clean, scannable output** — each item should take one line, shared values should not be repeated, and the user should be able to review a proposal without excessive scrolling.
 
 ## General Rules
 
-- **Minimize vertical space.** Prefer single-line bullets over multi-line blocks. Never use blank lines between list items.
+- **One line per item.** Each file gets one line with its changes. Never use multi-line blocks or sub-bullets per file.
 - **State shared values once.** If all notes share a property value (e.g., context: work), say it once in the header, not per item.
 - **Omit obvious details.** Don't repeat the operation type on every line. Don't show unchanged properties.
-- **Use tables only for summaries of ≤10 items.** For larger sets, use grouped counts with expandable details only if the user asks.
-- **No headers for single-section output.** If there's only one group, skip the group label and just list items.
+- **Group by logical category.** Use bold labels (not `###` headers) to group items — the label and first item share the same line.
+- **Use tables only for summaries of ≤10 items.** For larger sets, use grouped counts.
 
 ## Proposal Format
 
 Used when presenting any operation that needs user approval.
 
-```
-**<Operation> Proposal** — <N> files <shared context if any>
-
-**<Group>:** <file.md> → <changes> · <file2.md> → <changes>
-**<Group>:** <file.md> → <changes>
-
-⚠ <Anything needing user input: ambiguous decisions, empty files>
-```
-
-For operations where each item has multiple property changes, use one bullet per file:
+Default format — one line per file, grouped by category:
 
 ```
-**<Operation> Proposal** — <N> files, all context: work
+**<Operation> Proposal** — <N> files, all context: <shared value>
 
-**Snippets:** file.md → topic: [aws] · other.md → topic: [linux]
-**How-to:** guide.md → topic: [aws, terraform]
-**Troubleshooting:** bug.md → topic: [k8s, helm], resolved: true
+**<Group>:**
+- file.md → topic: [aws], tags: [cli]
+- other.md → topic: [linux]
+**<Group>:**
+- guide.md → topic: [aws, terraform]
+- setup.md → topic: [kubernetes]
 
 ⚠ Empty files: note.md, draft.md — include or skip?
 ```
 
-**Rules:**
-- Bold label per group on the same line as items — no `###` headers
-- Use ` · ` (middle dot) to separate multiple items on one line when they share the same changes pattern
-- One line per group if items fit; wrap to bullets only if a single line would exceed ~120 chars
-- Flag decisions needing user input with ⚠ at the end
+When multiple files in the same group have **identical changes**, collapse them onto one line with ` · ` (middle dot):
+
+```
+**Snippets:** file.md · other.md · script.md → topic: [aws]
+```
+
+Only use ` · ` when the changes are truly the same. If each file has different properties, list them separately.
 
 ## Progress Format
 
@@ -109,3 +105,81 @@ Single line. Include the command, error, and fix inline. Only expand to multi-li
 - Separate entries with ` · ` when they fit on one line
 - Bold the matching term in snippets
 - State totals in header, not at the bottom
+
+## Base Preview Format
+
+Used when proposing a `.base` file for approval before creating it.
+
+```
+**Base Proposal** — <name>.base in <path>
+
+Query: type = "how-to"
+Group by: topic
+Columns: Name, topic, context, tags
+Sort: topic (ascending)
+
+Filter formula:
+(property("type") = "how-to")
+```
+
+Show the human-readable intent first (query, grouping, columns), then the actual filter formula. Keep it to one block — don't split across multiple sections.
+
+## Template Preview Format
+
+Used when proposing a Templater template for approval before creating it.
+
+```
+**Template Proposal** — <name>.md in <templates path>
+
+---
+type: <% tp.system.prompt("Type") %>
+context: <% tp.system.prompt("Context") %>
+topic: []
+---
+
+# <% tp.file.title %>
+
+<template body>
+```
+
+Show the complete template content as it will appear in the file. No separate "explanation" section — the template should be self-explanatory with Templater syntax visible.
+
+## Info / List Format
+
+Used for read-only queries (vault structure, property listing, file listing) that don't modify anything.
+
+```
+**<Query Description>** — <N> results
+
+- item one
+- item two
+- item three
+```
+
+For property reads across multiple files:
+
+```
+**Properties on 5 files in Docs/**
+
+| File | type | context | topic |
+|------|------|---------|-------|
+| file.md | reference | work | [aws] |
+| other.md | how-to | work | [k8s] |
+```
+
+Use a table when showing the same properties across multiple files. Use a simple list for single-dimension results (file names, folder names, plugin names).
+
+## Multi-Phase Summary
+
+Used after a workflow with multiple phases completes (e.g., migration = property assignment + rename/move).
+
+```
+**Migration Complete** — <N> files
+
+Phase 1 (properties): <N> set, <N> failed
+Phase 2 (rename/move): <N> moved, <N> failed
+
+Failed: broken.md (file not found in phase 2)
+```
+
+One line per phase with counts. Only list individual failures at the end. Do not repeat the per-phase summaries that were already shown during execution.
