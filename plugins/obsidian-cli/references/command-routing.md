@@ -8,6 +8,10 @@ Full index of all Obsidian CLI reference files organized by category. Consult th
 - **[property-schema.md](property-schema.md)** - Universal and conditional property definitions
 - **[property-extraction-guide.md](property-extraction-guide.md)** - How to analyze content to assign properties
 
+## General CLI Reference
+
+- **[obsidian-cli.md](obsidian-cli.md)** - CLI overview: installation, file path conventions, environment variables, limitations
+
 ## Vault Understanding
 
 - **[obsidian-bases.md](obsidian-bases.md)** - How to create and structure `.base` files

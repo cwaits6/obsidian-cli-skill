@@ -23,7 +23,7 @@ docs/                              # Local reference docs (gitignored, not distr
 
 **Key files:**
 - `SKILL.md` is the entry point — it defines workflows (migrate, enrich, create bases, generate templates) and instructs Claude to always read reference files before constructing commands.
-- `references/FORMAT_STANDARD.md` defines the documentation format all reference files must follow.
+- `FORMAT_STANDARD.md` (repo root) defines the documentation format all reference files must follow.
 - `references/output-format-standard.md` defines how all user-facing output must be formatted (proposals, progress, summaries, errors).
 - `config.yaml.example` defines the user's property schema, naming conventions, and batch settings. Users copy this to `config.yaml` (gitignored) for personalization.
 
