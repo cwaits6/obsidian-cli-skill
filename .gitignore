@@ -49,3 +49,7 @@ yarn-error.log*
 *.tmp
 *.temp
 .*.swp
+
+# Common Files
+*.doc*
+*.pdf
