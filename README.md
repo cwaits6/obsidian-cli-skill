@@ -1,9 +1,15 @@
-# Obsidian CLI Skill
+<div align="center">
+
+# Obsidian CLI Skill for Claude Code
 
 ![Obsidian CLI Skill](assets/obsidian-cli-claude-skill-repo-banner.png)
 
 [![GitHub Release](https://img.shields.io/github/v/release/cwaits6/obsidian-cli-skill?style=flat-square)](https://github.com/cwaits6/obsidian-cli-skill/releases)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![Obsidian 1.12.1+](https://img.shields.io/badge/Obsidian-1.12.1%2B-7C3AED?style=flat-square&logo=obsidian&logoColor=white)](https://obsidian.md)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-Plugin-D97706?style=flat-square)](https://claude.ai/code)
+
+</div>
 
 Stop manually organizing your Obsidian vault. This skill teaches Claude to migrate, enrich, and restructure your notes — reading each one, assigning properties based on content, renaming to your conventions, and updating every link automatically. You review a proposal, approve it, and watch hundreds of notes get organized in minutes.
 
