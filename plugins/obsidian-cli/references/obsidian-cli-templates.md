@@ -5,49 +5,53 @@ Commands for working with Templater templates.
 ## templates - List all templates
 
 ```bash
-obsidian templates [--total]
+obsidian templates [total]
 ```
 
 **Parameters:**
-- `--total` - Show count of templates
+- `total` - Flag: show count of templates
 
-**Example:**
+**Examples:**
 ```bash
-obsidian templates --total
+obsidian templates
+
+obsidian templates total
 ```
 
 ## template:read - Read a template
 
 ```bash
-obsidian template:read --name "template-name" [--resolve] [--title "custom title"]
+obsidian template:read name=<template> [resolve] [title=<title>]
 ```
 
 **Parameters:**
-- `--name` (required) - Template name (without extension)
-- `--resolve` - Resolve template variables (useful for preview)
-- `--title` - Custom title for the template
+- `name=<template>` (required) - Template name (without extension)
+- `resolve` - Flag: resolve template variables (preview final content)
+- `title=<title>` - Custom title for variable resolution
 
-**Example:**
+**Examples:**
 ```bash
 # Read template
-obsidian template:read --name "how-to-template"
+obsidian template:read name="how-to-template"
 
 # Read and resolve variables to see what it will look like
-obsidian template:read --name "how-to-template" --resolve
+obsidian template:read name="how-to-template" resolve
 ```
 
 ## template:insert - Insert template into current note
 
 ```bash
-obsidian template:insert --name "template-name"
+obsidian template:insert name=<template>
 ```
 
 **Parameters:**
-- `--name` (required) - Template name (without extension)
+- `name=<template>` (required) - Template name (without extension)
 
-**Example:**
+**Examples:**
 ```bash
-obsidian template:insert --name "meeting-template"
+obsidian template:insert name="meeting-template"
+
+obsidian template:insert name="reference-template"
 ```
 
 ## Creating Template Files
@@ -240,12 +244,12 @@ resolved: false
 
 1. **Create template file:**
    ```bash
-   obsidian create --name "custom-template" --path "Templates"
+   obsidian create name="custom-template" path="Templates"
    ```
 
 2. **Add template content:**
    ```bash
-   obsidian append --file "Templates/custom-template.md" --content "[your template content]"
+   obsidian append path="Templates/custom-template.md" content="[your template content]"
    ```
 
 3. **List templates to verify:**
@@ -256,7 +260,7 @@ resolved: false
 4. **Use the template:**
    When creating a new note:
    ```bash
-   obsidian create --name "new-note" --path "My-Notes" --template "custom-template"
+   obsidian create name="new-note" path="My-Notes" template="custom-template"
    ```
 
 ## See Also

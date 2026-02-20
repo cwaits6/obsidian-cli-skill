@@ -27,7 +27,9 @@ Full index of all Obsidian CLI reference files organized by category. Consult th
 ## Advanced Features
 
 - **[obsidian-cli-bases.md](obsidian-cli-bases.md)** - Base operations (query, create, views)
+- **[obsidian-cli-daily.md](obsidian-cli-daily.md)** - Daily note operations (open, read, append, prepend)
 - **[obsidian-cli-templates.md](obsidian-cli-templates.md)** - Template operations (list, read, insert)
+- **[obsidian-cli-publish.md](obsidian-cli-publish.md)** - Publish operations (status, add/remove, open)
 - **[obsidian-cli-plugins.md](obsidian-cli-plugins.md)** - Plugin management (enable, disable, install, uninstall)
 
 ## Search & Analysis
@@ -46,6 +48,7 @@ Full index of all Obsidian CLI reference files organized by category. Consult th
 ## UI & Workspace
 
 - **[obsidian-cli-workspace.md](obsidian-cli-workspace.md)** - Workspace and tab management
+- **[obsidian-cli-web-unique.md](obsidian-cli-web-unique.md)** - Web viewer and unique note creator
 - **[obsidian-cli-themes.md](obsidian-cli-themes.md)** - Theme installation and management
 - **[obsidian-cli-snippets.md](obsidian-cli-snippets.md)** - CSS snippet management
 - **[obsidian-cli-commands.md](obsidian-cli-commands.md)** - Command execution and hotkey lookup

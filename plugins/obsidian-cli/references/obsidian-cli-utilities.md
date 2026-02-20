@@ -2,6 +2,19 @@
 
 General utility commands for vault management and information.
 
+## help - Show list of all available commands
+
+```bash
+obsidian help
+```
+
+**Examples:**
+```bash
+obsidian help
+
+obsidian vault="My Vault" help
+```
+
 ## version - Show Obsidian version
 
 ```bash

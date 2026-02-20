@@ -43,6 +43,7 @@ Before submitting:
 2. Check format consistency with [FORMAT_STANDARD.md](FORMAT_STANDARD.md)
 3. Ensure all examples are tested and work
 4. Validate file paths and parameter names
+5. Run local QA command in Claude Code: `/o-qa`
 
 ### Pull Request Process
 

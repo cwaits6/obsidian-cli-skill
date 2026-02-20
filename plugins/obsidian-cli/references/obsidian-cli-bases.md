@@ -13,44 +13,67 @@ obsidian bases
 ## base:query - Query a base
 
 ```bash
-obsidian base:query --path "path/to/file.base" [--format "json|csv|tsv|md|paths"]
+obsidian base:query [file=<name>] [path=<path>] [view=<name>] [format=json|csv|tsv|md|paths]
 ```
 
 **Parameters:**
-- `--path` (required) - Path to `.base` file relative to vault root
-- `--format` - Output format
+- `file=<name>` - Base filename (wikilink resolution)
+- `path=<path>` - Exact path to `.base` file relative to vault root
+- `view=<name>` - View name to query
+- `format=json|csv|tsv|md|paths` - Output format
   - `json` - JSON format
   - `csv` - Comma-separated values
   - `tsv` - Tab-separated values
   - `md` - Markdown table
-  - `paths` - File paths only (default)
+  - `paths` - File paths only
 
 **Examples:**
 ```bash
 # Query base as markdown table
-obsidian base:query --path "Bases/my-base.base" --format "md"
+obsidian base:query path="Bases/my-base.base" format=md
 
 # Get results as JSON
-obsidian base:query --path "Bases/work-notes.base" --format "json"
+obsidian base:query path="Bases/work-notes.base" format=json
 
-# Get just file paths
-obsidian base:query --path "Bases/references.base"
+# Query a specific view
+obsidian base:query path="Bases/work-notes.base" view="by-topic" format=paths
 ```
 
 ## base:create - Create item in base
 
 ```bash
-obsidian base:create --path "path/to/file.base" [--silent] [--newtab]
+obsidian base:create [name=<name>] [content=<text>] [silent] [newtab]
 ```
 
 **Parameters:**
-- `--path` (required) - Path to `.base` file
-- `--silent` - Don't show notification
-- `--newtab` - Open in new tab
+- `name=<name>` - Name for the new item
+- `content=<text>` - Initial content for the new item
+- `silent` - Flag: create without opening
+- `newtab` - Flag: open in new tab
 
-**Example:**
+**Examples:**
 ```bash
-obsidian base:create --path "Bases/work-base.base" --newtab
+# Create item with default name/content
+obsidian base:create
+
+# Create named item and open in new tab
+obsidian base:create name="New Work Note" content="# Draft" newtab
+```
+
+## base:views - List views in the current base file
+
+```bash
+obsidian base:views
+```
+
+**Examples:**
+```bash
+# List all views in active base
+obsidian base:views
+
+# Open a base file, then inspect its views
+obsidian open path="Bases/work-by-topic.base"
+obsidian base:views
 ```
 
 ## Creating .base Files
@@ -84,7 +107,7 @@ views:
 
 Then create the file via CLI:
 ```bash
-obsidian create --name "my-base" --path "Bases" --content "$(cat base-config.yaml)"
+obsidian create name="my-base" path="Bases" content="id: my-base\nname: My Base\ntype: database"
 ```
 
 ## Common Patterns
@@ -117,7 +140,7 @@ views:
 
 ### Query base and display results
 ```bash
-obsidian base:query --path "Bases/work-by-topic.base" --format "md"
+obsidian base:query path="Bases/work-by-topic.base" format=md
 ```
 
 ## See Also
