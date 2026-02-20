@@ -77,13 +77,6 @@ Your `config.yaml` is gitignored — plugin updates won't overwrite it.
 
 Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-### Local QA
-
-This repo includes a local-only QA harness (not bundled in the published plugin):
-
-- In Claude Code, run `/o-qa`
-- Or run scripts directly from `qa/scripts/`
-
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for version history.
