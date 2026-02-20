@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/cwaits6/obsidian-cli-skill/compare/v1.1.0...v1.2.0) (2026-02-20)
+
+
+### Features
+
+* add subagent, expand reference coverage and retune skill ([#4](https://github.com/cwaits6/obsidian-cli-skill/issues/4)) ([4574564](https://github.com/cwaits6/obsidian-cli-skill/commit/45745648fc177b5e6c6b92a66f86f50b21546f27))
+
 # [1.1.0](https://github.com/cwaits6/obsidian-cli-skill/compare/v1.0.0...v1.1.0) (2026-02-15)
 
 
