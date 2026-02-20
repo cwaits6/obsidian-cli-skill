@@ -24,7 +24,7 @@ Contributions are welcome! This skill is maintained for the Claude Code communit
 ### Documentation Standards
 
 - Keep parameter format consistent with actual Obsidian CLI usage
-- Use the format from [FORMAT_STANDARD.md](references/FORMAT_STANDARD.md)
+- Use the format from [FORMAT_STANDARD.md](FORMAT_STANDARD.md)
 - Include minimum 2 examples per command
 - Show both basic and advanced usage
 - Use relative paths (vault root) for file examples
@@ -40,9 +40,10 @@ Use semantic commit messages:
 
 Before submitting:
 1. Verify command syntax: `obsidian help`
-2. Check format consistency with [FORMAT_STANDARD.md](references/FORMAT_STANDARD.md)
+2. Check format consistency with [FORMAT_STANDARD.md](FORMAT_STANDARD.md)
 3. Ensure all examples are tested and work
 4. Validate file paths and parameter names
+5. Run local QA command in Claude Code: `/o-qa`
 
 ### Pull Request Process
 

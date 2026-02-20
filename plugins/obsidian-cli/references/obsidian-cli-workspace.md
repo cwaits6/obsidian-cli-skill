@@ -20,6 +20,24 @@ obsidian workspace
 obsidian workspace ids
 ```
 
+## workspaces - List saved workspaces
+
+```bash
+obsidian workspaces [total]
+```
+
+**Parameters:**
+- `total` - Flag: show workspace count
+
+**Examples:**
+```bash
+# List saved workspaces
+obsidian workspaces
+
+# Show workspace count
+obsidian workspaces total
+```
+
 ## tabs - List open tabs
 
 ```bash
@@ -61,6 +79,56 @@ obsidian tab:open file="Tech/K8s/Helm.md"
 obsidian tab:open file="my-base.base" view=table
 ```
 
+## workspace:save - Save current layout as workspace
+
+```bash
+obsidian workspace:save [name=<name>]
+```
+
+**Parameters:**
+- `name=<name>` - Workspace name
+
+**Examples:**
+```bash
+# Save with generated name
+obsidian workspace:save
+
+# Save with explicit name
+obsidian workspace:save name="Research Layout"
+```
+
+## workspace:load - Load a saved workspace
+
+```bash
+obsidian workspace:load name=<name>
+```
+
+**Parameters:**
+- `name=<name>` (required) - Workspace name
+
+**Examples:**
+```bash
+obsidian workspace:load name="Research Layout"
+
+obsidian workspace:load name="Writing Focus"
+```
+
+## workspace:delete - Delete a saved workspace
+
+```bash
+obsidian workspace:delete name=<name>
+```
+
+**Parameters:**
+- `name=<name>` (required) - Workspace name
+
+**Examples:**
+```bash
+obsidian workspace:delete name="Old Layout"
+
+obsidian workspace:delete name="Scratch"
+```
+
 ## Common Patterns
 
 ### Get workspace layout
@@ -72,4 +140,10 @@ obsidian workspace ids
 ```bash
 obsidian tabs
 obsidian tab:open file="my-note.md"
+```
+
+### Save and restore layouts
+```bash
+obsidian workspace:save name="Review"
+obsidian workspace:load name="Review"
 ```

@@ -10,7 +10,7 @@ npm install -g @obsidianmd/obsidian-cli
 
 Verify installation:
 ```bash
-obsidian --version
+obsidian version
 ```
 
 ## Core Commands

@@ -1,5 +1,5 @@
 {
   "name": "obsidian-cli",
-  "description": "Comprehensive Obsidian vault automation via CLI. Migrations, property management, Bases, templates, search, and 95+ documented commands.",
+  "description": "Automate Obsidian vault operations via CLI: note migration, property management, Bases, templates, search, and bulk file operations.",
   "version": "1.1.0"
 }

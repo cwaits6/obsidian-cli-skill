@@ -99,4 +99,6 @@ Categories:
 - `obsidian-cli-outline.md` - Outline operations
 - `obsidian-cli-bases.md` - Base operations
 - `obsidian-cli-templates.md` - Template operations
-
+- `obsidian-cli-daily.md` - Daily note operations
+- `obsidian-cli-publish.md` - Publish operations
+- `obsidian-cli-web-unique.md` - Web viewer and unique note operations

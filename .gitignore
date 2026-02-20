@@ -49,3 +49,11 @@ yarn-error.log*
 *.tmp
 *.temp
 .*.swp
+
+# Common Files
+*.doc*
+*.pdf
+
+# Local reference docs (converted from PDF, not for distribution)
+docs/
+

@@ -44,6 +44,27 @@ obsidian vaults
 obsidian vaults total verbose
 ```
 
+## vault:open - Switch to a different vault (TUI only)
+
+```bash
+obsidian vault:open name=<name>
+```
+
+**Parameters:**
+- `name=<name>` (required) - Vault name
+
+**Examples:**
+```bash
+# Switch vault inside interactive TUI session
+obsidian vault:open name="Work"
+
+obsidian vault:open name="Personal Vault"
+```
+
+**Notes:**
+- This command is available in the Obsidian CLI TUI.
+- For one-off shell commands, prefer `obsidian vault=<name> <command>`.
+
 ## files - List files in vault
 
 ```bash
