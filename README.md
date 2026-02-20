@@ -7,7 +7,7 @@
 [![GitHub Release](https://img.shields.io/github/v/release/cwaits6/obsidian-cli-skill?style=flat-square)](https://github.com/cwaits6/obsidian-cli-skill/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Obsidian 1.12.1+](https://img.shields.io/badge/Obsidian-1.12.1%2B-7C3AED?style=flat-square&logo=obsidian&logoColor=white)](https://obsidian.md)
-[![Claude Code](https://img.shields.io/badge/Claude_Code-Plugin-D97706?style=flat-square&logo=anthropic&logoColor=white)](https://claude.ai/code)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-Plugin-D97706?style=flat-square&logo=claude&logoColor=white)](https://claude.ai/code)
 
 </div>
 
