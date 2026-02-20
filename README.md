@@ -1,5 +1,7 @@
 # Obsidian CLI Skill
 
+![Obsidian CLI Skill](assets/obsidian-cli-claude-skill-repo-banner.png)
+
 [![GitHub Release](https://img.shields.io/github/v/release/cwaits6/obsidian-cli-skill?style=flat-square)](https://github.com/cwaits6/obsidian-cli-skill/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
