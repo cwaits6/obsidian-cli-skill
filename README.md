@@ -47,15 +47,19 @@ Every operation follows the same approval workflow:
 3. **Approve** — you say yes (or adjust)
 4. **Execute** — commands run via Obsidian CLI
 
-**Step 1: Claude proposes changes for review**
+**Step 1: Claude proposes property assignments for each note**
 
-![Claude proposes renames and property assignments for each note](assets/migration-proposal.png)
+![Phase 1 property proposal grouped by type with edge case warnings](assets/migration-phase1-proposal.png)
 
-**Step 2: Migration complete with summary**
+**Step 2: Claude proposes renames and destination folder**
 
-![Summary table showing completed migrations with all assigned properties](assets/migration-complete.png)
+![Phase 2 rename and move proposal showing old to new filenames](assets/migration-phase2-proposal.png)
 
-Batch operations split into manageable chunks. You control batch size and whether to approve per-batch or per-note in your config.
+**Step 3: Migration complete with summary**
+
+![Summary table showing all migrated files with assigned type and resolved status](assets/migration-complete.png)
+
+Large operations run through a dedicated **batch executor agent** that processes files in chunks, so you get progress feedback throughout and can approve per-batch or per-note. Batch size is configurable.
 
 ## Configuration
 
