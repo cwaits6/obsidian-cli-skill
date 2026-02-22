@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/cwaits6/obsidian-cli-skill/compare/v1.2.0...v1.3.0) (2026-02-22)
+
+
+### Features
+
+* add QA harness and update references for Obsidian 1.12.2 ([#5](https://github.com/cwaits6/obsidian-cli-skill/issues/5)) ([24e56b4](https://github.com/cwaits6/obsidian-cli-skill/commit/24e56b4b9e45d540a781d7e9e911634f030208f0))
+
 # [1.2.0](https://github.com/cwaits6/obsidian-cli-skill/compare/v1.1.0...v1.2.0) (2026-02-20)
 
 
