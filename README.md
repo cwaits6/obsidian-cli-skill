@@ -6,7 +6,7 @@
 
 [![GitHub Release](https://img.shields.io/github/v/release/cwaits6/obsidian-cli-skill?style=flat-square)](https://github.com/cwaits6/obsidian-cli-skill/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
-[![Obsidian 1.12.1+](https://img.shields.io/badge/Obsidian-1.12.1%2B-7C3AED?style=flat-square&logo=obsidian&logoColor=white)](https://obsidian.md)
+[![Obsidian 1.12.2+](https://img.shields.io/badge/Obsidian-1.12.2%2B-7C3AED?style=flat-square&logo=obsidian&logoColor=white)](https://obsidian.md)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Plugin-D97706?style=flat-square&logo=claude&logoColor=white)](https://claude.ai/code)
 
 </div>
@@ -79,7 +79,7 @@ Your `config.yaml` is gitignored — plugin updates won't overwrite it.
 
 ## Requirements
 
-- Obsidian 1.12.1 or later with CLI enabled (Settings → General → Advanced → Command line interface) — requires a [Catalyst license](https://help.obsidian.md/catalyst)
+- Obsidian 1.12.2 or later with CLI enabled (Settings → General → Advanced → Command line interface) — requires a [Catalyst license](https://help.obsidian.md/catalyst)
 - Claude Code with plugin support
 
 ## Contributing
