@@ -51,13 +51,12 @@ obsidian restart
 ## random - Open a random note
 
 ```bash
-obsidian random [folder=<path>] [newtab] [silent]
+obsidian random [folder=<path>] [newtab]
 ```
 
 **Parameters:**
 - `folder=<path>` - Limit to specific folder
 - `newtab` - Flag: open in new tab
-- `silent` - Flag: don't show notification
 
 **Examples:**
 ```bash
@@ -67,8 +66,8 @@ obsidian random
 # Random note from folder
 obsidian random folder="Tech"
 
-# Open in new tab silently
-obsidian random folder="02-Work/00-Notes" newtab silent
+# Open in new tab
+obsidian random folder="02-Work/00-Notes" newtab
 ```
 
 ## random:read - Read a random note

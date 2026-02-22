@@ -42,13 +42,13 @@ obsidian base:query path="Bases/work-notes.base" view="by-topic" format=paths
 ## base:create - Create item in base
 
 ```bash
-obsidian base:create [name=<name>] [content=<text>] [silent] [newtab]
+obsidian base:create [name=<name>] [content=<text>] [open] [newtab]
 ```
 
 **Parameters:**
 - `name=<name>` - Name for the new item
 - `content=<text>` - Initial content for the new item
-- `silent` - Flag: create without opening
+- `open` - Flag: open file after creating (CLI is silent by default)
 - `newtab` - Flag: open in new tab
 
 **Examples:**

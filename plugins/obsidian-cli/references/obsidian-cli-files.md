@@ -5,7 +5,7 @@ Commands for creating, reading, moving, and deleting files. Obsidian CLI automat
 ## create - Create a new file
 
 ```bash
-obsidian create [name=<name>] [path=<path>] [content=<text>] [template=<name>] [overwrite] [silent] [newtab]
+obsidian create [name=<name>] [path=<path>] [content=<text>] [template=<name>] [overwrite] [open] [newtab]
 ```
 
 **Parameters:**
@@ -14,7 +14,7 @@ obsidian create [name=<name>] [path=<path>] [content=<text>] [template=<name>] [
 - `content=<text>` - Initial file content
 - `template=<name>` - Template to use for file content
 - `overwrite` - Flag: overwrite if file already exists
-- `silent` - Flag: don't show notification
+- `open` - Flag: open file after creating (CLI is silent by default)
 - `newtab` - Flag: open in new tab
 
 **Examples:**
@@ -83,7 +83,7 @@ done
 ## append - Add content to end of file
 
 ```bash
-obsidian append [file=<name>] [path=<path>] content=<text> [inline] [silent]
+obsidian append [file=<name>] [path=<path>] content=<text> [inline]
 ```
 
 **Parameters:**
@@ -91,7 +91,6 @@ obsidian append [file=<name>] [path=<path>] content=<text> [inline] [silent]
 - `path=<path>` - Target path (alternative to file parameter)
 - `content=<text>` (required) - Content to append
 - `inline` - Flag: don't add newline before content
-- `silent` - Flag: don't show notification
 
 **Example:**
 ```bash
@@ -101,10 +100,32 @@ obsidian append file="My-Notes/meeting.md" content="## Follow-up Items"
 ## prepend - Add content to start of file
 
 ```bash
-obsidian prepend [file=<name>] [path=<path>] content=<text> [inline] [silent]
+obsidian prepend [file=<name>] [path=<path>] content=<text> [inline]
 ```
 
-**Same parameters as append**, but adds to beginning of file.
+**Same parameters as append**, but adds to beginning of file (after frontmatter).
+
+## rename - Rename a file in place
+
+```bash
+obsidian rename [file=<name>] [path=<path>] name=<new-name>
+```
+
+**Parameters:**
+- `file=<name>` - Current filename (include path relative to vault root)
+- `path=<path>` - Target path (alternative to file parameter)
+- `name=<new-name>` (required) - New filename (without path)
+
+**Note:** Renames the file within its current folder. To move to a different folder, use `move` instead. All vault links are automatically updated.
+
+**Examples:**
+```bash
+# Rename to kebab-case
+obsidian rename file="Notes/My Meeting Notes.md" name="my-meeting-notes.md"
+
+# Rename using path parameter
+obsidian rename path="Notes/helmValuesOverride.md" name="helm-values-override.md"
+```
 
 ## delete - Delete file
 

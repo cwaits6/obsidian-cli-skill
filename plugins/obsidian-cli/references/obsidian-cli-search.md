@@ -5,17 +5,18 @@ Commands for searching vault content and analyzing link structure.
 ## search - Search vault for text
 
 ```bash
-obsidian search query=<text> [path=<folder>] [limit=<n>] [total] [matches] [case] [format=text|json]
+obsidian search query=<text> [path=<folder>] [limit=<n>] [total] [case] [format=text|json]
 ```
 
 **Parameters:**
 - `query=<text>` (required) - Search query text
 - `path=<folder>` - Limit search to folder
 - `limit=<n>` - Maximum number of results
-- `total` - Flag: show result count
-- `matches` - Flag: show match details
+- `total` - Flag: return match count only
 - `case` - Flag: case-sensitive search
-- `format=text|json` - Output format
+- `format=text|json` - Output format (default: text)
+
+**Note:** For results with matching line context, use `search:context` instead.
 
 **Examples:**
 ```bash
@@ -27,6 +28,28 @@ obsidian search query="config" path="Tech/K8s" limit=10
 
 # Search with JSON output
 obsidian search query="error" format=json
+```
+
+## search:context - Search with matching line context
+
+```bash
+obsidian search:context query=<text> [path=<folder>] [limit=<n>] [case] [format=text|json]
+```
+
+**Parameters:**
+- `query=<text>` (required) - Search query text
+- `path=<folder>` - Limit search to folder
+- `limit=<n>` - Maximum number of results
+- `case` - Flag: case-sensitive search
+- `format=text|json` - Output format (default: text)
+
+**Examples:**
+```bash
+# Search with surrounding line context
+obsidian search:context query="kubernetes" path="Notes"
+
+# JSON output with context
+obsidian search:context query="error" format=json
 ```
 
 ## search:open - Open search view
@@ -67,14 +90,15 @@ obsidian links file="my-note.md" path="My-Notes" total
 ## backlinks - List backlinks to a file
 
 ```bash
-obsidian backlinks [file=<name>] [path=<path>] [counts] [total]
+obsidian backlinks [file=<name>] [path=<path>] [counts] [total] [format=json|tsv|csv]
 ```
 
 **Parameters:**
 - `file=<name>` - Target filename (include path relative to vault root)
 - `path=<path>` - Target path (alternative to file)
-- `counts` - Flag: show usage counts
-- `total` - Flag: show total count
+- `counts` - Flag: include link counts
+- `total` - Flag: return backlink count only
+- `format=json|tsv|csv` - Output format (default: tsv)
 
 **Examples:**
 ```bash
@@ -88,13 +112,14 @@ obsidian backlinks file="my-note.md" counts total
 ## unresolved - List unresolved links in vault
 
 ```bash
-obsidian unresolved [total] [counts] [verbose]
+obsidian unresolved [total] [counts] [verbose] [format=json|tsv|csv]
 ```
 
 **Parameters:**
-- `total` - Flag: show count of unresolved links
-- `counts` - Flag: show frequency counts
-- `verbose` - Flag: show detailed information
+- `total` - Flag: return unresolved link count only
+- `counts` - Flag: include link counts
+- `verbose` - Flag: include source files
+- `format=json|tsv|csv` - Output format (default: tsv)
 
 **Examples:**
 ```bash
