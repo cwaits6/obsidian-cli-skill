@@ -57,3 +57,6 @@ yarn-error.log*
 # Local reference docs (converted from PDF, not for distribution)
 docs/
 
+# QA report vault snapshots (raw test output — summary.md is kept, vault files are not)
+qa/reports/**/vault/
+
