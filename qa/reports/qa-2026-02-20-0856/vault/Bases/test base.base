@@ -1,0 +1,23 @@
+id: test-base
+name: Test Base
+type: database
+properties:
+  type:
+    type: string
+  context:
+    type: string
+  topic:
+    type: list
+views:
+  table:
+    type: table
+    name: Table
+    sourceType: folder
+    source: Notes
+    properties:
+      - type
+      - context
+      - topic
+    sort:
+      - property: type
+        direction: asc
