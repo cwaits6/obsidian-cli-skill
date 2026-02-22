@@ -13,6 +13,8 @@
 
 Stop manually organizing your Obsidian vault. This skill teaches Claude to migrate, enrich, and restructure your notes — reading each one, assigning properties based on content, renaming to your conventions, and updating every link automatically. You review a proposal, approve it, and watch hundreds of notes get organized in minutes.
 
+Every Obsidian CLI command is documented in its own reference file. The skill uses progressive disclosure — only loading the reference it needs for your specific request — so the model always has precise, complete command syntax without bloating the context window.
+
 ## Quick Start
 
 ```bash
@@ -35,8 +37,6 @@ Migrate all my notes from Research/ to Notes/ with automatic property assignment
 - **Bulk operations** — rename, move, delete, or update properties across hundreds of files
 - **Search and analyze** — find notes by content, trace link structure, surface orphans and broken links
 - **Manage plugins and themes** — enable, disable, install via CLI
-
-All 95+ Obsidian CLI commands are documented with syntax, parameters, and examples.
 
 ## How It Works
 
@@ -62,6 +62,7 @@ Batch operations split into manageable chunks. You control batch size and whethe
 Copy the example config and customize for your vault:
 
 ```bash
+# Path will match wherever Claude Code installed the plugin
 cp ~/.claude/plugins/marketplaces/obsidian-cli-skill/plugins/obsidian-cli/config.yaml.example \
    ~/.claude/plugins/marketplaces/obsidian-cli-skill/plugins/obsidian-cli/config.yaml
 ```
@@ -78,7 +79,7 @@ Your `config.yaml` is gitignored — plugin updates won't overwrite it.
 
 ## Requirements
 
-- Obsidian 1.12.1 or later with CLI enabled
+- Obsidian 1.12.1 or later with CLI enabled (Settings → General → Advanced → Command line interface) — requires a [Catalyst license](https://help.obsidian.md/catalyst)
 - Claude Code with plugin support
 
 ## Contributing
